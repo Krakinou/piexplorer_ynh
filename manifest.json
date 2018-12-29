@@ -1,6 +1,6 @@
 {
-    "name": "piexplorer",
-    "id": "piexplorer",
+    "name": "YunoHost example app",
+    "id": "ynhexample",
     "packaging_format": 1,
     "description": {
         "en": "Example package for YunoHost application.",
@@ -10,15 +10,18 @@
     "url": "https://example.com",
     "license": "free",
     "maintainer": {
-        "name": "Krakinou",
-        "email": "misterl56@hotmail.com"
+        "name": "John doe",
+        "email": "john.doe@example.com",
+        "url": "http://example.com"
     },
     "requirements": {
         "yunohost": ">= 2.7.14"
     },
-    "multi_instance": false,
+    "multi_instance": true,
     "services": [
-        "nginx"
+        "nginx",
+        "php5-fpm",
+        "mysql"
     ],
     "arguments": {
         "install" : [
@@ -58,6 +61,28 @@
                     "fr": "Est-ce une application publique ?"
                 },
                 "default": true
+            },
+            {
+                "name": "language",
+                "ask": {
+                    "en": "Choose the application language",
+                    "fr": "Choisissez la langue de l'application"
+                },
+                "choices": ["fr", "en"],
+                "default": "fr"
+            },
+            {
+                "name": "password",
+                "type": "password",
+                "ask": {
+                    "en": "Set the administrator password",
+                    "fr": "Définissez le mot de passe administrateur"
+                },
+                "help": {
+                    "en": "Use the help field to add an information for the admin about this question.",
+                    "fr": "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
+                },
+                "example": "Choose a password"
             }
         ]
     }
